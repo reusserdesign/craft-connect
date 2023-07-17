@@ -93,6 +93,13 @@ class ConnectVariable
                 'password' => $dbConnection['password'],
                 'tablePrefix' => $dbConnection['tablePrefix'],
             ];
+
+            if ($dbConnection['driver'] == "sqlsrv") {
+                $config['dsn'] = "{$dbConnection['driver']}:"
+                    . "Server={$dbConnection['server']}"
+                    . ",{$dbConnection['port']};"
+                    . "Database={$dbConnection['database']};";
+            }
         }
 
         return $config;
