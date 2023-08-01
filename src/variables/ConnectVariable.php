@@ -97,6 +97,10 @@ class ConnectVariable
                     . "Server={$dbConnection['server']}"
                     . ",{$dbConnection['port']};"
                     . "Database={$dbConnection['database']};";
+
+                if ($dbConnection['trust_server_certificate']) {
+                    $config['dsn'] .= "TrustServerCertificate=true;";
+                }
             }
         }
 
